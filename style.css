@@ -1,0 +1,163 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    line-height: 1.6;
+    background: #0a0a0a;
+    color: #ffffff;
+    padding: 2rem;
+}
+
+h1, h2 {
+    color: #ff4444;
+    margin: 1.5rem 0;
+}
+
+h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+}
+
+h1::after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 3px;
+    background: #0077ff;
+    margin: 0.5rem auto;
+}
+
+.timeline-container {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.timeline-container::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background: #0077ff;
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    position: relative;
+    width: 50%;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    transition: transform 0.3s ease;
+}
+
+.timeline-item:hover {
+    transform: translateY(-5px);
+}
+
+.timeline-item:nth-child(odd) {
+    left: 0;
+    border-left: 4px solid #ff4444;
+    margin-left: 1.5rem;
+}
+
+.timeline-item:nth-child(even) {
+    left: 50%;
+    border-right: 4px solid #0077ff;
+    margin-right: 1.5rem;
+}
+
+img {
+    max-width: 400px;  /* Tamaño máximo más moderado */
+    width: 80%;        /* Ocupará 80% del contenedor */
+    height: auto;
+    border-radius: 8px;
+    margin: 1rem auto; /* Centrado vertical y horizontal */
+    display: block;    /* Para que el margin auto funcione */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+img:hover {
+    transform: scale(1.02);
+}
+
+p {
+    color: #e0e0e0;
+    font-size: 1.1rem;
+    margin: 1rem 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .timeline-container::before {
+        left: 20px;
+    }
+
+    .timeline-item {
+        width: 100%;
+        left: 0 !important;
+        margin-left: 40px;
+        border-left: 4px solid #ff4444 !important;
+        border-right: none !important;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+}
+
+/* Efecto de fecha */
+h2 {
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+h2::before {
+    content: '➤';
+    color: #0077ff;
+    position: absolute;
+    left: -1rem;
+    font-size: 1.2rem;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.timeline-item {
+    animation: fadeIn 0.6s ease forwards;
+    opacity: 0;
+}
+
+/* Retrasos para animación escalonada */
+.timeline-item:nth-child(1) { animation-delay: 0.2s; }
+.timeline-item:nth-child(2) { animation-delay: 0.4s; }
+.timeline-item:nth-child(3) { animation-delay: 0.6s; }
+/* Continúa el patrón según sea necesario */
+
+@media (max-width: 768px) {
+    img {
+        max-width: 300px; /* Tamaño más pequeño en móviles */
+        width: 90%;      /* Ocupará casi todo el ancho */
+    }
+}
